@@ -12,7 +12,7 @@ let data = JSON.parse(readfile)
 // SQL Statement
 var CREATE_TABLE_CONTACTS = "CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, firstname TEXT NOT NULL, lastname TEXT, company_name TEXT, email TEXT, phone TEXT, created_at DATE)"
 var CREATE_TABLE_GROUPS = "CREATE TABLE IF NOT EXISTS groups (id INTEGER PRIMARY KEY AUTOINCREMENT, group_name TEXT NOT NULL, created_at DATE)"
-var CREATE_TABLE_CONTACTGROUP = "CREATE TABLE IF NOT EXISTS group_contact (id INTEGER PRIMARY KEY AUTOINCREMENT, contact_id INTEGER, group_id INTEGER, FOREIGNKEY(contact_id) REFERENCES contacts(id), FOREIGNKEY(group_id) REFERENCES groups(id))"
+var CREATE_TABLE_CONTACTGROUP = "CREATE TABLE IF NOT EXISTS group_contact (id INTEGER PRIMARY KEY AUTOINCREMENT, contact_id INTEGER, group_id INTEGER, FOREIGN KEY(contact_id) REFERENCES contacts(id), FOREIGN KEY(group_id) REFERENCES groups(id))"
 var SEED_DATA_CONTACTS = "INSERT INTO contacts (firstname, lastname, company_name, email, phone, created_at) VALUES "
 var SEED_DATA_GROUPS = "INSERT INTO groups (group_name, created_at) VALUES "
 
@@ -25,10 +25,11 @@ let createTableContacts = () => {
       if (err) {
         console.log(err)
       } else {
-        console.log('CREATE_TABLE_CONTACTS');
+        console.log('CREATE_TABLE_CONTACTS Succeed!');
       }
     })
   })
+  return ''
 }
 
 // CREATE_TABLE_GROUPS
@@ -40,7 +41,22 @@ let createTableGroups = () => {
       if (err) {
         console.log(err)
       } else {
-        console.log('CREATE_TABLE_GROUPS');
+        console.log('CREATE_TABLE_GROUPS Succeed!');
+      }
+    })
+  })
+}
+
+// CREATE_TABLE_CONTACTGROUP
+let createTableContactGroup = () => {
+  // Run SQL one at a time
+  db.serialize(function() {
+    // Create TABLE
+    db.run(CREATE_TABLE_CONTACTGROUP, function(err) {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log('CREATE_TABLE_CONTACTGROUP Succeed!');
       }
     })
   })
@@ -89,5 +105,6 @@ let seedDataGroups = () => {
 var r = repl.start('> ')
 r.context.createTableContacts = createTableContacts
 r.context.createTableGroups = createTableGroups
+r.context.createTableContactGroup = createTableContactGroup
 r.context.seedDataContacts = seedDataContacts
 r.context.seedDataGroups = seedDataGroups
