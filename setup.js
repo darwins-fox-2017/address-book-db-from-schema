@@ -91,9 +91,9 @@ let seedDataGroup_Details = () =>{
 
 for (let i = 0; i < dataDummy.group_details.length; i++) {
   if (i < dataDummy.group_details.length -1) {
-    SEED_DATA_DETAILS += `('${dataDummy.group_details[i].contactId}', '${dataDummy.group_details[i].createdAt}'),`
+    SEED_DATA_DETAILS += `('${dataDummy.group_details[i].contactId}', '${dataDummy.group_details[i].groupId}'),`
   }else {
-    SEED_DATA_DETAILS += `('${dataDummy.group_details[i].contactId}', '${dataDummy.group_details[i].createdAt}')`
+    SEED_DATA_DETAILS += `('${dataDummy.group_details[i].contactId}', '${dataDummy.group_details[i].groupId}')`
   }
 }
 

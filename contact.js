@@ -7,8 +7,8 @@ const file = 'address_book.db'
 const db = new sqlite.Database(file)
 
 //SQL STATEMENT
-let ADD_DATA = "INSERT INTO contacts(firstName, lastName, phone, email, createdAt) VALUES ($firstName, $lastName, $phone, $email, $createdAt)"
-let EDIT_DATA = "UPDATE contacts SET firstName = $firstName, lastName = $lastName, phone = $phone, email = $email, createdAt = $createdAt WHERE id = $id"
+let ADD_DATA = "INSERT INTO contacts(firstName, lastName, phone, email, createdAt) VALUES ($firstName, $lastName, $phone, $email, Date('now'))"
+let EDIT_DATA = "UPDATE contacts SET firstName = $firstName, lastName = $lastName, phone = $phone, email = $email, createdAt = Date('now') WHERE id = $id"
 let DELETE_DATA = "DELETE FROM contacts WHERE id = $id"
 let DELETE_GROUOP_DETAILS = "DELETE FROM contacts WHERE id = $id"
 let SHOW_DATA = "SELECT contacts.*, subquery.groupName AS groupContact FROM contacts LEFT JOIN (SELECT * FROM group_details, groups WHERE group_details.groupId = groups.id) AS subquery ON subquery.contactId = contacts.id"
@@ -33,8 +33,7 @@ export class Contacts {
             $firstName:firstName,
             $lastName:lastName,
             $phone:phone,
-            $email:email,
-            $createdAt:new Date()
+            $email:email
           }, function(err){
             err ? console.log(err):console.log(`SEED DATA SUCCESSFUL`)
           })
@@ -55,8 +54,7 @@ export class Contacts {
             $firstName:firstName,
             $lastName:lastName,
             $phone:phone,
-            $email:email,
-            $createdAt:new Date()
+            $email:email
           }, function(err){
             err ? console.log(err):console.log(`UPDATE DATA SUCCESSFUL`)
           })
@@ -70,7 +68,7 @@ export class Contacts {
         {
           $id:id,
         }, function(err){
-          err ? console.log(err):console.log(`DELETE DATA SUCCESSFUL`)
+          err ? console.log(err):console.log(`DATA HAS BEEN DELETED`)
         })
     })
 
@@ -79,7 +77,7 @@ export class Contacts {
         {
           $id:id,
         }, function(err){
-          err ? console.log(err):console.log(`DELETE DATA IN GROUPS DETAILS SUCCESSFUL`)
+          err ? console.log(err):console.log(`DATA HAS BEEN DELETED IN CONTACT GROUPS`)
         })
     })
   }

@@ -32,5 +32,8 @@
     }, {
         "contactId": "002",
         "groupId": "002"
-    }]
+    }, {
+       "contactId": "003",
+       "groupId": "002"
+   }]
 }
