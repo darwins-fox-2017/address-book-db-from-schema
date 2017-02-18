@@ -1,0 +1,34 @@
+{
+    "contacts": [{
+                  "name": "Isumi",
+                  "company_name": "SEHATI",
+                  "phone": "08159070289",
+                  "email": "isumi@hacktiv8.com",
+                  "created_at": "18-01-2017"
+                 },
+                 {
+                  "name": "Karina",
+                  "company_name": "SENASIB",
+                  "phone": "08159070289",
+                  "email": "aiko@hacktiv8.com",
+                  "created_at": "18-01-2017"
+                }],
+
+    "groups": [{
+                "group_name": "CEO",
+                "created_at": "18-01-2017"
+              },
+              {
+                "group_name": "CTO",
+                "created_at": "18-01-2017"
+             }],
+
+    "group_contacts": [{
+                        "contact_id": "1",
+                        "group_id": "1"
+                       },
+                       {
+                        "contact_id": "2",
+                        "group_id": "2"
+                      }]
+}
