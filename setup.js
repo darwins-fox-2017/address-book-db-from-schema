@@ -51,7 +51,28 @@ let createContactGroup = () => {
   })
 }
 
-createContactGroup()
+
+// let CREATE_NEW_COLUMN = `ALTER TABLE contacts ADD COLUMN contact_id INTEGER;`
+
+// let CREATE_NEW_TABLE = `CREATE TABLE new_contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, contact_name TEXT NOT NULL, company_name TEXT, phone TEXT, email TEXT, created_at DATETIME);`
+
+// let CREATE_NEW_TABLE = `INSERT INTO new_contacts SELECT id, contact_name, company_name, phone, email, created_at FROM contacts ;`
+//
+// let createnewColumn = () => {
+//   db.serialize(function(){
+//     db.run(CREATE_NEW_TABLE,function(err){
+//       if(err){
+//         console.log(err);
+//       }else{
+//         console.log('contact_groups table has been successfully created');
+//       }
+//     })
+//   })
+// }
+
+// createnewColumn()
+
+// createContactGroup()
 // let input = repl.start('> ')
 //
 // input.context.createContact = createContact

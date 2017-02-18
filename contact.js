@@ -12,6 +12,7 @@ export class Contact{
     this.phone = data["phone"]
     this.email = data["email"]
     this.created_at = data["created_at"]
+    this.group_id = data["group_id"]
   }
 
 
@@ -30,6 +31,7 @@ export class Contact{
     }else{
 
       let SEED_CONTACT = `INSERT INTO contacts (contact_name, company_name, phone, email, created_at) VALUES ('${this.contact_name}','${this.company_name}','${this.phone}','${this.email}','${this.created_at}');`
+
 
       db.serialize(function() {
         db.run(SEED_CONTACT,function(err){

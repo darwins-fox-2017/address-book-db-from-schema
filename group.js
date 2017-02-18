@@ -58,6 +58,7 @@ export class Group{
   deleteGroup(id){
     let DELETE_GROUP = `DELETE FROM groups WHERE id = ${id}`
 
+
     db.serialize(function() {
       db.all(DELETE_GROUP,function(err){
         if (err){
@@ -67,6 +68,7 @@ export class Group{
         }
       })
     })
+
   }
 
 }
