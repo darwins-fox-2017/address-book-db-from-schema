@@ -1,0 +1,41 @@
+{
+    "contacts": [{
+            "id": 1,
+            "firstname": "Bambang",
+            "lastname": "Handoko",
+            "company_name": "hacktiv8",
+            "email": "bambang.handoko12@gmail.com",
+            "phone": "888-888-888",
+            "created_at": "2017-02-13"
+        },
+        {
+            "id": 2,
+            "firstname": "Romo",
+            "lastname": "Doro",
+            "company_name": "hacktiv8",
+            "email": "romodoro@gmail.com",
+            "phone": "888-888-888",
+            "created_at": "2017-02-13"
+        },
+        {
+            "id": 3,
+            "firstname": "Samuel",
+            "lastname": "Sinaga",
+            "company_name": "hacktiv8",
+            "email": "sinaganaga@gmail.com",
+            "phone": "888-888-888",
+            "created_at": "2017-02-13"
+        }
+    ],
+    "groups": [{
+            "id": 1,
+            "group_name": "Instructor",
+            "created_at": "2017-02-13"
+        },
+        {
+            "id": 2,
+            "group_name": "Student",
+            "created_at": "2017-02-13"
+        }
+    ]
+}
