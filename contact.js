@@ -1,15 +1,15 @@
 "use strict"
 
-let repl = require('repl')
 let sqlite3 = require('sqlite3')
 let file = 'address_book.db'
 let db = new sqlite3.Database(file)
 
 class Contact {
-  static insertContact(firstname, lastname, companyName, phone, email) {
+
+  static seedContact(firstname, lastname, companyName, phone, email) {
     let regexEmail = /[a-zA-Z]*@[a-zA-Z]{5}.com/g
     if (firstname.length > 4 && regexEmail.test(email) && (phone.length > 10 && phone.length < 13)) {
-      let SEED_DATA_CONTACTS = `INSERT INTO contacts (firstname, lastname, company_name, email, phone) VALUES ('${firstname}', '${lastname}', '${companyName}', '${email}', '${phone}')`
+      let SEED_DATA_CONTACTS = `INSERT INTO contacts (firstname, lastname, company_name, email, phone, created_at) VALUES ('${firstname}', '${lastname}', '${companyName}', '${email}', '${phone}', 'new Date()')`
       db.serialize(function(){
         db.run(SEED_DATA_CONTACTS, function(err){
           if (err) {
@@ -52,7 +52,7 @@ class Contact {
   }
 
   static assignContactToGroup(contacts_id, groups_id) {
-    var ASSIGN_DATA_CONTACT_TO_GROUP = `INSERT INTO contact_groups (contacts_id, groups_id) VALUES ('${contacts_id}','${groups_id}')`;
+    var ASSIGN_DATA_CONTACT_TO_GROUP = `INSERT INTO group_contact (contact_id, group_id) VALUES ('${contacts_id}','${groups_id}')`;
     db.serialize(function() {
       db.run(ASSIGN_DATA_CONTACT_TO_GROUP, function(err) {
         if (err) {
@@ -65,7 +65,10 @@ class Contact {
   }
 
   static showContactGroup() {
-    var SELECT_DATA_CONTACTGROUP = `SELECT * FROM contacts JOIN contact_groups ON contacts.id = contact_groups.contacts_id`;
+    var SELECT_DATA_CONTACTGROUP = `SELECT custom.id, custom.firstname, custom.lastname, custom.company_name, custom.email,
+    custom.phone, groups.group_name FROM (SELECT * FROM contacts JOIN group_contact ON contacts.id = group_contact.contact_id)
+    as custom JOIN groups ON custom.group_id=groups.id`;
+
     db.serialize(function() {
       db.each(SELECT_DATA_CONTACTGROUP, function(err, row) {
         if (err) {
@@ -79,6 +82,3 @@ class Contact {
 }
 
 export default Contact
-
-var r = repl.start('REPL > ')
-r.context.insertContact = Contact.insertContact
