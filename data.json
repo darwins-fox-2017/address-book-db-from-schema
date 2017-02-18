@@ -1,0 +1,61 @@
+{
+  "contacts": [
+    {
+      "contactName": "Barrett",
+      "company": "Ferry - McDermott",
+      "phone": "533-186-0229",
+      "email": "Luis.Ferry@hotmail.com",
+      "created_at": "2016-12-11T22:36:11.836Z"
+    },
+    {
+      "contactName": "Josefina",
+      "company": "Weissnat, Bins and West",
+      "phone": "633-157-1042",
+      "email": "Junius7@yahoo.com",
+      "created_at": "2016-05-01T16:09:21.457Z"
+    },
+    {
+      "contactName": "Courtney",
+      "company": "Gutkowski LLC",
+      "phone": "760-644-9498",
+      "email": "Brennan79@yahoo.com",
+      "created_at": "2016-12-29T17:00:08.918Z"
+    },
+    {
+      "contactName": "Ayden",
+      "company": "Altenwerth and Will",
+      "phone": "650-932-9577",
+      "email": "Javonte99@gmail.com",
+      "created_at": "2016-02-23T09:08:24.660Z"
+    },
+    {
+      "contactName": "Maudie",
+      "company": "Cummerata - Pagac",
+      "phone": "741-167-7277",
+      "email": "Tiara.Wisoky@gmail.com",
+      "created_at": "2016-05-05T11:55:53.419Z"
+    }
+  ],
+  "groups": [
+    {
+      "groupName": "Visionary",
+      "created_at": "2016-10-30T22:32:44.546Z"
+    },
+    {
+      "groupName": "robust",
+      "created_at": "2016-04-16T19:01:58.434Z"
+    },
+    {
+      "groupName": "Cotton",
+      "created_at": "2016-09-15T09:35:35.576Z"
+    },
+    {
+      "groupName": "Kroon",
+      "created_at": "2017-01-25T14:16:06.794Z"
+    },
+    {
+      "groupName": "Bolivia",
+      "created_at": "2016-10-13T09:23:50.379Z"
+    }
+  ]
+}
