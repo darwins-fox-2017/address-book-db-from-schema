@@ -18,7 +18,7 @@ export class ContactGroup {
     db.serialize(function(){
       db.run(ADD,{$contactId : contactId, $groupId:contactId},function(err){
         if (err) console.log(err);
-        else console.log(('DATA CONTACT GROUP ADDED SUCCESS'));
+        else console.log('DATA CONTACT_GROUP ADDED SUCCESS');
       })
     })
   }
@@ -27,7 +27,7 @@ export class ContactGroup {
     db.serialize(function(){
       db.run(EDIT,{$contactId:contactId, $groupId:groupId, $id:id}, function(err){
         if (err) console.log(err);
-        else console.log(('DATA CONTACT GROUP EDITED SUCCESS'));
+        else console.log('DATA CONTACT_GROUP EDITED SUCCESS');
       })
     })
   }
@@ -36,7 +36,7 @@ export class ContactGroup {
     db.serialize(function(){
       db.run(DELETE,{$id:id}, function(err){
         if (err) console.log(err);
-        else console.log(('DATA CONTACT GROUP DELETED SUCCESS'));
+        else console.log('DATA CONTACT GROUP_DELETED SUCCESS');
       })
     })
   }
