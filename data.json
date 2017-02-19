@@ -1,0 +1,63 @@
+{
+    "contacts": [{
+            "firstName": "cucu",
+            "lastName": "sam",
+            "phone": "533-186-0229",
+            "email": "Luis.Ferry@hotmail.com",
+            "createdAt": "2016-12-11T22:36:11.836Z"
+        },
+        {
+            "firstName": "miracle",
+            "lastName": "amer",
+            "phone": "633-157-1042",
+            "email": "Junius7@yahoo.com",
+            "createdAt": "2016-05-01T16:09:21.457Z"
+        },
+        {
+            "firstName": "ppd",
+            "lastName": "peter",
+            "phone": "760-644-9498",
+            "email": "Brennan79@yahoo.com",
+            "createdAt": "2016-12-29T17:00:08.918Z"
+        },
+        {
+            "firstName": "notail",
+            "lastName": "johan",
+            "phone": "650-932-9577",
+            "email": "Javonte99@gmail.com",
+            "createdAt": "2016-02-23T09:08:24.660Z"
+        },
+        {
+            "firstName": "mushi",
+            "lastName": "chai",
+            "phone": "741-167-7277",
+            "email": "Tiara.Wisoky@gmail.com",
+            "createdAt": "2016-05-05T11:55:53.419Z"
+        }
+    ],
+
+    "groups": [{
+        "groupName": "Asia",
+        "createdAt": "16-01-2016"
+    }, {
+        "groupName": "Europe",
+        "createdAt": "17-03-2016"
+    }],
+
+    "group_details": [{
+        "contactId": "001",
+        "groupId": "002"
+    }, {
+        "contactId": "002",
+        "groupId": "001"
+    }, {
+        "contactId": "003",
+        "groupId": "001"
+    }, {
+        "contactId": "004",
+        "groupId": "001"
+    }, {
+        "contactId": "005",
+        "groupId": "002"
+    }]
+}
