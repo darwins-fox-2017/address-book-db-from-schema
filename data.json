@@ -1,0 +1,39 @@
+{
+    "contacts": [{
+        "firstName": "Eri",
+        "lastName": "Irawan",
+        "phone": "085980070011",
+        "email": "hacktiv8&@mail.com",
+        "createdAt": "16-01-2016"
+    }, {
+        "firstName": "Dabol",
+        "lastName": "bikin",
+        "phone": "085980070012",
+        "email": "hacktiv8&@mail.com",
+        "createdAt": "16-02-2016"
+    }, {
+        "firstName": "Dabol",
+        "lastName": "bikin",
+        "phone": "085980070013",
+        "email": "hacktiv8&@mail.com",
+        "createdAt": "16-02-2016"
+    }],
+
+    "groups": [{
+        "groupName": "student",
+        "createdAt": "16-01-2016"
+    }, {
+        "groupName": "instructor",
+        "createdAt": "17-03-2016"
+    }],
+    "group_details": [{
+        "contactId": "001",
+        "groupId": "001"
+    }, {
+        "contactId": "002",
+        "groupId": "002"
+    }, {
+       "contactId": "003",
+       "groupId": "002"
+   }]
+}
