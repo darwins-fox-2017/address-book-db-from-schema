@@ -1,4 +1,4 @@
-export defaul class contactGroup {
+export default class contactGroup {
 
   add(contactId, groupId) {
     db.serialize( () => {
@@ -23,29 +23,4 @@ export defaul class contactGroup {
       })
     })
   }
-  //
-  // update(id, newNama) {
-  //   db.serialize( () => {
-  //     let query = `UPDATE groups SET namagroup = '${newNama} WHERE id = ${id}'`
-  //     db.run(query, (err) => {
-  //       if(!err)
-  //         console.log("Update group berhasil")
-  //       else
-  //         console.log(err);
-  //     })
-  //   })
-  // }
-  //
-  // delete(id) {
-  //   db.serialize( () => {
-  //     let query = `DELETE groups WHERE id = ${id}`
-  //     db.run(query, (err) => {
-  //       if(!err)
-  //         console.log("Delete groups success");
-  //       else
-  //         console.log(err);
-  //     })
-  //   })
-  // }
-  
 }

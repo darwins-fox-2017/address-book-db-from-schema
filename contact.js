@@ -3,7 +3,7 @@ export default class Contact {
   add(nama, telp, email) {
     db.serialize( () => {
       let query = `INSERT INTO contacts(nama, telp, email) VALUES ('${nama}', '${telp}', '${email}')`
-      db.run(query (err) => {
+      db.run(query, (err) => {
         if(err)
           console.log(err)
         else
@@ -14,19 +14,19 @@ export default class Contact {
 
   view() {
     db.serialize( () => {
-      let query = `SELECT * FROM contacts`
-      db.each(query (err, row) => {
+      let query = `SELECT contacts.*, subquery.namagroup AS group_contacts FROM contacts LEFT JOIN (SELECT * FROM group_contacts, groups WHERE group_contacts.group_id = groups.id) AS subquery ON subquery.contact_id = contacts.id`
+      db.each(query, (err, row) => {
         if(!err)
-          console.log(`ID : ${row.id}\nNama : ${row.nama}\nTelp : ${row.telp}\nEmail : ${row.email}`)
+          console.log(`\nID : ${row.id}\nNama : ${row.nama}\nTelp : ${row.telp}\nEmail : ${row.email}\nNama Group : ${row.group_contacts}`)
         else
           console.log(err)
       })
     })
   }
 
-  update(id, col, data) {
+  update(id, name, telp, email) {
     db.serialize( () => {
-      let query = `UPDATE contacts SET ${col} = '${data}' WHERE id = ${id}`
+      let query = `UPDATE contacts SET name = '${name}', telp = '${telp}', email = ${email} WHERE id = ${id}`
       db.run(query, (err) => {
         if(!err)
           console.log("Update contacts success");
