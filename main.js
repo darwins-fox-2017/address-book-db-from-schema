@@ -1,7 +1,6 @@
 "use strict"
 const repl = require("repl")
 const sqlite3 = require("sqlite3")
-
 let file = "address_book.db"
 let db = new sqlite3.Database(file)
 
@@ -10,10 +9,10 @@ import Group from "./group.js"
 import contactGroup from "./contact-group.js"
 
 class Main {
-  constructor() {
-    this.contact = new Contact()
-    this.group = new Group()
-    this.contactGroup = new contactGroup()
+  constructor(db) {
+    this.contact = new Contact(db)
+    this.group = new Group(db)
+    this.contactGroup = new contactGroup(db)
   }
 
   //Done
@@ -31,7 +30,7 @@ class Main {
     this.contactGroup.add(contact_id, group_id)
   }
 
-// Ganti Contact Update()
+  //Done
   updateContact(id, name, telp, email) {
     this.contact.update(id, name, telp, email)
   }
@@ -63,5 +62,5 @@ class Main {
 }
 
 let r = repl.start("> ")
-let main = new Main()
+let main = new Main(db)
 r.context.main = main

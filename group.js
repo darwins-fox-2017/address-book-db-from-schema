@@ -1,9 +1,14 @@
+'use strict'
+
 export default class Group {
+  constructor(db) {
+    this.db = db
+  }
 
  add(nama) {
-   db.serialize( () => {
+   this.db.serialize( () => {
      let query = `INSERT INTO groups(namagroup) VALUES ('${nama}')`
-     db.run(query, (err) => {
+     this.db.run(query, (err) => {
        if(!err)
          console.log("Insert group succes");
        else
@@ -13,9 +18,9 @@ export default class Group {
  }
 
  view() {
-   db.serialize( () => {
+   this.db.serialize( () => {
      let query = `SELECT * FROM groups`
-     db.each(query, (err, row) => {
+     this.db.each(query, (err, row) => {
        if(!err)
          console.log(`\nID : ${row.id}\nNama Group : ${row.namagroup}`)
        else
@@ -25,9 +30,9 @@ export default class Group {
  }
 
  update(id, newNama) {
-   db.serialize( () => {
+   this.db.serialize( () => {
      let query = `UPDATE groups SET namagroup = '${newNama}' WHERE id = ${id}`
-     db.run(query, (err) => {
+     this.db.run(query, (err) => {
        if(!err)
          console.log("Update group berhasil")
        else
@@ -37,9 +42,9 @@ export default class Group {
  }
 
  delete(id) {
-   db.serialize( () => {
+   this.db.serialize( () => {
      let query = `DELETE FROM groups WHERE id = ${id}`
-     db.run(query, (err) => {
+     this.db.run(query, (err) => {
        if(!err)
          console.log("Delete groups success");
        else
