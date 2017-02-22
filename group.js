@@ -7,12 +7,10 @@ export default class Group {
 
  add(nama) {
    this.db.serialize( () => {
-     let query = `INSERT INTO groups(namagroup) VALUES ('${nama}')`
+     let query = `INSERT INTO groups(groupname) VALUES ('${name}')`
      this.db.run(query, (err) => {
-       if(!err)
-         console.log("Insert group succes");
-       else
-         console.log(err);
+       if(!err) console.log("Insert group is success");
+       else console.log(err);
      })
    })
  }
@@ -21,22 +19,18 @@ export default class Group {
    this.db.serialize( () => {
      let query = `SELECT * FROM groups`
      this.db.each(query, (err, row) => {
-       if(!err)
-         console.log(`\nID : ${row.id}\nNama Group : ${row.namagroup}`)
-       else
-         console.log(err);
+       if(!err) console.log(`\nID : ${row.id}\n Group Name : ${row.groupname}`)
+       else console.log(err);
      })
    })
  }
 
- update(id, newNama) {
+ update(id, newName) {
    this.db.serialize( () => {
-     let query = `UPDATE groups SET namagroup = '${newNama}' WHERE id = ${id}`
+     let query = `UPDATE groups SET groupname = '${newName}' WHERE id = ${id}`
      this.db.run(query, (err) => {
-       if(!err)
-         console.log("Update group berhasil")
-       else
-         console.log(err);
+       if(!err) console.log("Updated group successfully")
+       else console.log(err);
      })
    })
  }
@@ -45,10 +39,8 @@ export default class Group {
    this.db.serialize( () => {
      let query = `DELETE FROM groups WHERE id = ${id}`
      this.db.run(query, (err) => {
-       if(!err)
-         console.log("Delete groups success");
-       else
-         console.log(err);
+       if(!err) console.log("Delete groups success");
+       else console.log(err);
      })
    })
  }

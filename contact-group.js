@@ -9,10 +9,8 @@ export default class contactGroup {
     this.db.serialize( () => {
       let query = `INSERT INTO group_contacts(contact_id, group_id) VALUES (${contactId}, ${groupId})`
       this.db.run(query, (err) => {
-        if(!err)
-          console.log("Insert Contact Group succes");
-        else
-          console.log(err);
+        if(!err) console.log("Insert contact group is success");
+        else console.log(err);
       })
     })
   }
@@ -21,10 +19,8 @@ export default class contactGroup {
     this.db.serialize( () => {
       let query = `SELECT * FROM group_contacts`
       this.db.each(query, (err, row) => {
-        if(!err)
-          console.log(`\nID : ${row.id}\nID Contact : ${row.contact_id}\nID Group : ${row.group_id}`)
-        else
-          console.log(err);
+        if(!err) console.log(`\nID : ${row.id}\nContact ID : ${row.contact_id}\nGroup ID : ${row.group_id}`)
+        else console.log(err);
       })
     })
   }

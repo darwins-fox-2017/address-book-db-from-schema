@@ -15,52 +15,44 @@ class Main {
     this.contactGroup = new contactGroup(db)
   }
 
-  //Done
   showContact() {
     this.contact.view()
   }
 
-  //Done
-  insertContact(name, telp, email) {
-    this.contact.add(name, telp, email)
+  insertContact(name, phone, email) {
+    this.contact.add(name, phone, email)
   }
 
-  //Done
   insertContactToGroup(contact_id, group_id) {
     this.contactGroup.add(contact_id, group_id)
   }
 
-  //Done
-  updateContact(id, name, telp, email) {
-    this.contact.update(id, name, telp, email)
+  updateContact(id, name, phone, email) {
+    this.contact.update(id, name, phone, email)
   }
 
-  //Done
   deleteContact(id) {
     this.contact.delete(id)
   }
-  // Done
+
   insertGroup(name) {
     this.group.add(name)
   }
 
-  //Done
   updateGroup(id, name) {
     this.group.update(id, name)
   }
 
-  //Done
   deleteGroup(id) {
     this.group.delete(id)
   }
 
-  //Done
   showGroup() {
     this.group.view()
   }
 
 }
 
-let r = repl.start("> ")
+let repel = repl.start("Command Here> ")
 let main = new Main(db)
-r.context.main = main
+repel.context.main = main

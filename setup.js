@@ -5,19 +5,15 @@ const fs = require("fs")
 let file = "address_book.db"
 let db = new sqlite3.Database(file)
 
-let arrContact = JSON.parse(fs.readFileSync("seedContact.json", "utf-8"))
-let arrGroup = JSON.parse(fs.readFileSync("seedGroup.json", "utf-8"))
-let arrGroupContact = JSON.parse(fs.readFileSync("seedGroupContact.json", "utf-8"))
+let arrContact = JSON.parse(fs.readFileSync("seedContacts.json", "utf-8"))
+let arrGroup = JSON.parse(fs.readFileSync("seedGroups.json", "utf-8"))
+let arrGroupContact = JSON.parse(fs.readFileSync("seedGroupContacts.json", "utf-8"))
 
-console.log(arrGroup[0].nama)
 
-QUERY_CONTACT = `CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY AUTOINCREMENT, nama TEXT NOT NULL, telp TEXT NOT NULL, email TEXT NOT NULL)`
-QUERY_GROUP = `CREATE TABLE IF NOT EXISTS groups(id INTEGER PRIMARY KEY AUTOINCREMENT, namagroup TEXT NOT NULL)`
-QUERY_GROUPCONTACT = `CREATE TABLE IF NOT EXISTS group_contacts(id INTEGER PRIMARY KEY AUTOINCREMENT,contact_id INTEGER, group_id INTEGER, FOREIGN KEY(contact_id) REFERENCES contacts(id),FOREIGN KEY(group_id) REFERENCES groups(id))`
+const QUERY_CONTACT = `CREATE TABLE IF NOT EXISTS contacts(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, phone TEXT NOT NULL, email TEXT NOT NULL)`
+const QUERY_GROUP = `CREATE TABLE IF NOT EXISTS groups(id INTEGER PRIMARY KEY AUTOINCREMENT, groupname TEXT NOT NULL)`
+const QUERY_GROUPCONTACT = `CREATE TABLE IF NOT EXISTS group_contacts(id INTEGER PRIMARY KEY AUTOINCREMENT,contact_id INTEGER, group_id INTEGER, FOREIGN KEY(contact_id) REFERENCES contacts(id),FOREIGN KEY(group_id) REFERENCES groups(id))`
 
-// INSERT_CONTACT = `INSERT INTO contacts VALUES (nama, telp, text) VALUES `
-
-// console.log("Test")
 
 let createTable = () => {
   db.serialize( () => {
@@ -25,34 +21,34 @@ let createTable = () => {
       if(err)
         console.log(err)
       else
-        console.log("Create contact success")
+        console.log("Created contact successfully")
     })
     db.run(QUERY_GROUP, (err) => {
       if(err)
         console.log(err)
       else
-        console.log("Create Group Success")
+        console.log("Created group successfully")
     })
     db.run(QUERY_GROUPCONTACT, (err) => {
       if(err)
         console.log(err)
       else
-        console.log("Finish");
+        console.log("Created groupcontact successfully");
     })
   })
 }
 
 let seedData = () => {
   db.serialize( () => {
-    let stmt = db.prepare("INSERT INTO contacts (nama, telp, email) VALUES (?, ?, ?)")
+    let stmt = db.prepare("INSERT INTO contacts (name, phone, email) VALUES (?, ?, ?)")
     for(let i=0; i<arrContact.length; i++) {
-      stmt.run(arrContact[i].nama, arrContact[i].telp, arrContact[i].email)
+      stmt.run(arrContact[i].name, arrContact[i].phone, arrContact[i].email)
     }
     stmt.finalize()
 
-    stmt = db.prepare("INSERT INTO groups (namagroup) VALUES (?)")
+    stmt = db.prepare("INSERT INTO groups (groupname) VALUES (?)")
     for(let i=0; i<arrGroup.length; i++) {
-      stmt.run(arrGroup[i].nama)
+      stmt.run(arrGroup[i].groupname)
     }
     stmt.finalize()
 
@@ -65,6 +61,6 @@ let seedData = () => {
   })
 }
 
-let r = repl.start('> ')
-r.context.createTable = createTable
-r.context.seedData = seedData
+let repel = repl.start('Command Here> ')
+repel.context.createTable = createTable
+repel.context.seedData = seedData
