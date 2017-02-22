@@ -59,8 +59,21 @@ class Groups {
     })
   }
 
-  static showName (val) {
-    let SHOW_NAME = `SELECT * FROM groups WHERE name LIKE '%${val}%'`; // apakah ini yg diminta
+  // static showName (val) {
+  //   let SHOW_NAME = `SELECT * FROM groups WHERE name LIKE '%${val}%'`;
+  //   db.serialize(function() {
+  //     db.each(SHOW_NAME, function(err,row) {
+  //       if(err) {
+  //         console.log(err);
+  //       } else {
+  //         console.log(row);
+  //       }
+  //     })
+  //   })
+  // }
+
+  static showName () {
+    let SHOW_NAME = `SELECT * FROM groups LEFT JOIN group_contacts ON groups.id = group_contacts.group_id `; 
     db.serialize(function() {
       db.each(SHOW_NAME, function(err,row) {
         if(err) {
