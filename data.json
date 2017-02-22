@@ -1,0 +1,51 @@
+{
+    "Contacts": [{
+            "name": "Irwin Pratajaya",
+            "company_name": "ABC",
+            "phone": "081234567",
+            "email": "irwin@pratajaya.com"
+        },
+        {
+            "name": "Rubi Henjaya",
+            "company_name": "XYZ",
+            "phone": "0217654456",
+            "email": "rubi@hacktiv8.com"
+        },
+        {
+            "name": "Windiana",
+            "company_name": "XYZ",
+            "phone": "08123412352",
+            "email": "windiana@hacktiv8.com"
+        },
+        {
+            "name": "Endy",
+            "company_name": "ABC",
+            "phone": "08124123556",
+            "email": "endy@hacktiv8.com"
+        }
+    ],
+    "Groups": [{
+            "name": "Student"
+        },
+        {
+            "name": "Instructor"
+        }
+    ],
+    "Group_Contacts": [{
+            "contact_id": "1",
+            "group_id": "1"
+        },
+        {
+            "contact_id": "2",
+            "group_id": "2"
+        },
+        {
+            "contact_id": "3",
+            "group_id": "2"
+        },
+        {
+            "contact_id": "4",
+            "group_id": "1"
+        }
+    ]
+}
