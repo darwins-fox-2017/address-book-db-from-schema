@@ -9,30 +9,32 @@ class Contact {
   static seedContact(firstname, lastname, companyName, phone, email) {
     let regexEmail = /[a-zA-Z]*@[a-zA-Z]{5}.com/g
     if (firstname.length > 4 && regexEmail.test(email) && (phone.length > 10 && phone.length < 13)) {
-      let SEED_DATA_CONTACTS = `INSERT INTO contacts (firstname, lastname, company_name, email, phone, created_at) VALUES ('${firstname}', '${lastname}', '${companyName}', '${email}', '${phone}', 'new Date()')`
+      let SEED_DATA_CONTACTS = `INSERT INTO contacts (firstname, lastname, company_name, email, phone, created_at) VALUES ('${firstname}', '${lastname}', '${companyName}', '${email}', '${phone}', '${new Date()}')`
       db.serialize(function(){
         db.run(SEED_DATA_CONTACTS, function(err){
           if (err) {
             console.log(err)
           } else {
-            console.log('Insert data succeed!!')
+            console.log('Insert data Berhasil !!')
           }
         })
       })
     } else {
-      console.log(`Invalid DATA format. Try Again!`)
+      console.log(`Format data tidak sesuai`)
     }
     return ''
   }
 
   static updateContact(firstname, lastname, companyName, phone, email, id) {
-    let UPDATE_DATA_CONTACT = `UPDATE contacts SET firstname = '${firstname}', lastname = '${lastname}', company_name = '${companyName}', telephone = '${telp}', email = '${email}' WHERE id = '${id}'`
+    // updateContact('Harryy', 'Christ', 'Hacktiv', '111-888-333', 'harry@gmail.com', '2')
+    let UPDATE_DATA_CONTACT = `UPDATE contacts SET firstname = '${firstname}', lastname = '${lastname}', company_name = '${companyName}', telephone = '${phone}', email = '${email}' WHERE id = ${id}`
+    // console.log(UPDATE_DATA_CONTACT);
     db.serialize(function() {
       db.run(UPDATE_DATA_CONTACT, function(err) {
         if (err) {
           console.log(err)
         } else {
-          console.log('Update data succeed!!')
+          console.log('Update data Berhasil!!')
         }
       });
     });
@@ -45,7 +47,7 @@ class Contact {
         if (err) {
           console.log(err)
         } else {
-          console.log('Delete data succeed!!')
+          console.log('Delete data Berhasil!!')
         }
       });
     });
@@ -58,7 +60,7 @@ class Contact {
         if (err) {
           console.log(err)
         } else {
-          console.log('Assign contact to a new group succeed!')
+          console.log('Berhasil menambahkan contact ke Group !')
         }
       });
     });
